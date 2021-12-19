@@ -1,0 +1,19 @@
+import random
+lst = ['0','1','2','3','4','5','6','7','8','9']
+def generate():
+    global lst
+    y = '0123456789'
+    num = ' '
+    for i in range(3):
+        while True:
+            i = random.randint(0, 10)
+            #i = i - 1
+            if str(i) in lst:
+                lst[i] = ' '
+                num = str(num) + str(i) 
+                break
+            else:
+                i = random.randint(0, 10)     
+    lst = ['0','1','2','3','4','5','6','7','8','9']
+    print(num)
+    num = ' '
