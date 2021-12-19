@@ -1,0 +1,73 @@
+import random
+lst = ['0','1','2','3','4','5','6','7','8','9']
+def generate():
+    global lst
+    y = '0123456789'
+    num1 = ''
+    for i in range(3):
+        while True:
+            i = random.randint(0, 10)
+            if str(i) in lst:
+                lst[i] = ' '
+                num1 = str(num1) + str(i) 
+                break
+            else:
+                i = random.randint(0, 10)     
+    lst = ['0','1','2','3','4','5','6','7','8','9']
+    y = '0123456789'
+    return num1
+def prot():
+    global lst,a,b
+    x1 = int(a) % 10
+    x2 = int(a) % 100
+    x2 = x2 - x1
+    x3 = int(a) % 1000
+    x3 = x3 - x2 - x1
+    x2 = x2/10
+    x3 = x3/100
+    y1 = int(b) % 10
+    y2 = int(b) % 100
+    y2 = y2 - y1
+    y3 = int(b) % 1000
+    y3 = y3 - y2 - y1
+    y2 = y2/10
+    y3 = y3/100
+    count = 0
+    if x1 == y1:
+        count =+ 1
+    if x2 == y2:
+        count =+ 1
+    if x3 == y3:
+        count =+ 1
+        
+    x = 0
+    for i in a:
+        if i in b:
+            x = x + 1
+    if count == 1:
+        print('Горячо!')
+    elif count == 2:
+        print('Горячо!')
+    elif x != 1 and x != 2 and x != 3:
+        print('Холодно!')
+    elif x == 1:
+        print('Тепло!')
+    elif x == 2:
+        print('Тепло!')
+    elif count != 1 or count != 2 or count != 3:
+        print('Холодно!')
+    
+print('Компьютер загадал число!')
+b = generate()
+a = input('Попробуйте его угадать:')
+if a == b:
+    print('Числа равны!Поздравляю с победой!')
+else:
+    prot()
+    while True:
+        print('Попробуй еще раз!')
+        a = input('Попробуйте его угадать:')
+        prot()
+        if a == b:
+            print('Числа равны!Поздравляю с победой!')
+            break
