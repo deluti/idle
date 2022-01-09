@@ -1,0 +1,13 @@
+a = int(input('Введите число:'))
+b = 1
+c = 1
+def rec():
+    global a,b,c
+    if b == a:
+        print(str(c))
+        return 
+    else:
+        b = b + 1
+        c = b * c
+    rec()
+rec()
