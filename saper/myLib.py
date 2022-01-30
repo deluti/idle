@@ -76,10 +76,6 @@ def mins():
     y1 = 0
     x2 = 0
     y2 = 0
-    x3 = 0
-    y3 = 0
-    x4 = 0
-    y4 = 0
     x = random.randint(1, 12)
     y = random.randint(1, 12)
     while True:
@@ -119,78 +115,39 @@ def mins():
             y3 = random.randint(1, 12)
         else:
             break
-    while True:
-        x3 = random.randint(1, 12)
-        if x4 == x or x4 == x1 or x4 == x2 or x4 == x3:
-            x4 = random.randint(1, 12)
-        else:
-            break
-    while True:
-        y3 = random.randint(1, 12)
-        if y4 == y1 or y4 == y or y4 == y2 or y4 == y3:
-            y4 = random.randint(1, 12)
-        else:
-            break
     pole[x-1][y-1] = '%'
     pole[x1-1][y1-1] = '%'
     pole[x2-1][y2-1] = '%'
-    pole[x3-1][y3-1] = '%'
-    pole[x4-1][y4-1] = '%'
 def prov():
     global pole
-    for x in range(0, 11):
-        for y in range(0,11):
-            if pole[x][y] == '%' and x > 0:
-                pole[x-1][y] = '1'
-                if pole[x-1][y] == '1' and (pole[x-1][y+1] == '%' or pole[x-1][y-1] == '%' or pole[x+1][y+1] == '%' or pole[x+1][y-1] == '%'):
-                    pole[x-1][y] = '2'
-                    #if pole[x-1][y] == '2':
-                    #    pole[x-1][y] = '3'
-            if pole[x][y] == '%' and x < 12:
-                pole[x+1][y] = '1'
-                if pole[x+1][y] == '1' and (pole[x-1][y+1] == '%' or pole[x-1][y-1] == '%' or pole[x+1][y+1] == '%' or pole[x+1][y-1] == '%'):
-                    pole[x+1][y] = '2'
-                    #if pole[x+1][y] == '2':
-                    #    pole[x+1][y] = '3'
-            if pole[x][y] == '%' and y > 0:
-                pole[x][y-1] = '1'
-                if pole[x][y-1] == '1' and (pole[x-1][y+1] == '%' or pole[x-1][y-1] == '%' or pole[x+1][y+1] == '%' or pole[x+1][y-1] == '%'):
-                    pole[x][y-1] = '2'
-                    #if pole[x][y-1] == '2':
-                    #    pole[x][y-1] = '3'
-            if pole[x][y] == '%' and y < 12:
-                pole[x][y+1] = '1'
-                if pole[x][y+1] == '1' and (pole[x-1][y+1] == '%' or pole[x-1][y-1] == '%' or pole[x+1][y+1] == '%' or pole[x+1][y-1] == '%'):
-                    pole[x][y+1] = '2'
-                    #if pole[x][y+1] == '2':
-                    #    pole[x][y+1] = '3'
-            #=========================================
-            if pole[x][y] == '%' and x > 0:
-                pole[x-1][y-1] = '1'
-                pole[x-1][y+1] = '1'
-                if pole[x-1][y] == '1' and (pole[x-1][y+1] == '%' or pole[x-1][y-1] == '%' or pole[x+1][y+1] == '%' or pole[x+1][y-1] == '%'):
-                    pole[x-1][y] = '2'
-                    #if pole[x-1][y] == '2':
-                    #    pole[x-1][y] = '3'
-            if pole[x][y] == '%' and x < 12:
-                pole[x+1][y-1] = '1'
-                pole[x+1][y+1] = '1'
-                if pole[x+1][y] == '1' and (pole[x-1][y+1] == '%' or pole[x-1][y-1] == '%' or pole[x+1][y+1] == '%' or pole[x+1][y-1] == '%'):
-                    pole[x+1][y] = '2'
-                    #if pole[x+1][y] == '2':
-                    #    pole[x+1][y] = '3'
-            if pole[x][y] == '%' and y > 0:
-                pole[x-1][y-1] = '1'
-                pole[x+1][y-1] = '1'
-                if pole[x][y-1] == '1' and (pole[x-1][y+1] == '%' or pole[x-1][y-1] == '%' or pole[x+1][y+1] == '%' or pole[x+1][y-1] == '%'):
-                    pole[x][y-1] = '2'
-                    #if pole[x][y-1] == '2':
-                    #    pole[x][y-1] = '3'
-            if pole[x][y] == '%' and y < 12:
-                pole[x+1][y+1] = '1'
-                pole[x-1][y+1] = '1'
-                if pole[x][y+1] == '1' and (pole[x-1][y+1] == '%' or pole[x-1][y-1] == '%' or pole[x+1][y+1] == '%' or pole[x+1][y-1] == '%'):
-                    pole[x][y+1] = '2'
+    for x in range(-1,11):
+        for y in range(-1,11):
+            x1 = 0
+            if pole[x+1][y] == '%':
+                x1 = x1 + 1
+                pole[x][y] = x1
+            if pole[x-1][y] == '%':
+                x1 = x1 + 1
+                pole[x][y] = x1
+            if pole[x][y-1] == '%':
+                x1 = x1 + 1
+                pole[x][y] = x1
+            if pole[x][y+1] == '%':
+                x1 = x1 + 1
+                pole[x][y] = x1
+            if pole[x+1][y+1] == '%':
+                x1 = x1 + 1
+                pole[x][y] = x1
+            if pole[x-1][y+1] == '%':
+                x1 = x1 + 1
+                pole[x][y] = x1
+            if pole[x+1][y-1] == '%':
+                x1 = x1 + 1
+                pole[x][y] = x1
+            if pole[x-1][y-1] == '%':
+                x1 = x1 + 1
+                pole[x][y] = x1
+            
             
 
             
