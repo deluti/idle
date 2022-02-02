@@ -1,0 +1,26 @@
+def count():
+    a = int(input('Введите сторону a:'))
+    b = int(input('Введите сторону b:'))
+    c = int(input('Введите сторону c:'))
+    print('Обработка')
+    sum1 = a + b
+    sum2 = a + c
+    sum3 = b + c
+    if sum1 > c and sum2 > b and sum3 > a:
+        print('Такой треугольник есть')
+        p = a + b + c
+        print('Периметр: ' + str(p))
+        p = p / 2
+        s = p * (p - a) * (p - b) * (p - c)
+        s = s ** 0.5
+        print('Площадь: ' + str(s))
+        if a == c and c == b:
+            print('треугольник равносторонний')
+        elif a == b or b == c or a == c:
+            print('треугольник равнобедренный')
+    else:
+        print('Такого треугольника не существует')
+    print('========================================')
+run = True
+while(run):
+    count()
