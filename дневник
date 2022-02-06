@@ -1,0 +1,70 @@
+people = {'Фио':'','математика':'','русский язык':'','история':'','биология':'','информатика':''}
+monday = {'история':'','математика':''}
+tuesday = {'математика':'','русский язык':''}
+wednesday = {'история':'','русский язык':''}
+thursday = {'биология':'','химия':''}
+friday = {'химия':'','математика':''}
+def estimates():
+    print('выберете день')
+    day = input()
+    if day == 'monday':
+        print('выберете урок')  
+        lesson = input()
+        if lesson == 'история':
+            print('введите оценку')           
+            grade = input()
+            monday['истоирия'] = grade
+        if lesson == 'математика':
+            print('введите оценку')           
+            grade = input()
+            monday['математика'] = grade
+    if day == 'tuesday':
+        print('выберете урок')  
+        lesson = input()
+        if lesson == 'русский язык':
+            print('введите оценку')           
+            grade = input()
+            tuesday['русский язык'] = grade
+        if lesson == 'математика':
+            print('введите оценку')           
+            grade = input()
+            tuesday['математика'] = grade
+    if day == 'wednesday':
+        print('выберете урок')  
+        lesson = input()
+        if lesson == 'история':
+            print('введите оценку')           
+            grade = input()
+            wednesday['истоирия'] = grade
+        if lesson == 'математика':
+            print('введите оценку')           
+            grade = input()
+            wednesday['русский язык'] = grade
+    if day == 'thursday':
+        print('выберете урок')  
+        lesson = input()
+        if lesson == 'биология':
+            print('введите оценку')           
+            grade = input()
+            thursday['биология'] = grade
+        if lesson == 'химия':
+            print('введите оценку')           
+            grade = input()
+            thursday['химия'] = grade
+    if day == 'friday':
+        print('выберете урок')  
+        lesson = input()
+        if lesson == 'химия':
+            print('введите оценку')           
+            grade = input()
+            friday['биология'] = grade
+        if lesson == 'математика':
+            print('введите оценку')           
+            grade = input()
+            friday['математика'] = grade
+run = True
+while(run):
+    estimates()
+        
+    
+
