@@ -1,0 +1,80 @@
+people = {'имя':'','возраст':'','рост':'','суперсила':'','пароль':'','слабость':''}
+
+print('Введите имя')
+name = input()
+people['имя'] = name
+
+print('Введите возраст')
+name = input()
+people['возраст'] = name
+
+print('Введите рост')
+name = input()
+people['рост'] = name
+
+print('Введите суперсилу')
+name = input()
+people['суперсила'] = name
+
+print('Введите пароль')
+name = input()
+people['пароль'] = name
+
+print('Введите слабость')
+name = input()
+people['слабость'] = name
+print('Регистрация пройдена! Вы:')
+print(people)
+def remove():
+    print('Введите, что вы хотите поменять')
+    run = True
+    while(run):
+        name = input()
+        if name != 'имя' and name != 'возраст' and name != 'рост' and name != 'суперсила' and name != 'пароль' and name != 'слабость':
+            print('Введте еще раз, такого параметра не существует')
+        else:
+            break
+        if name == 'имя':
+            print('Введите новое имя')
+            newName = input()
+            people['имя'] = newName
+            if people['имя'] == newName:
+                print('Имя успешно изменено')
+        if name == 'возраст':
+            print('Введите новоый возраст')
+            newAge = input()
+            people['возраст'] = newAge
+            if people['возраст'] == newName:
+                print('Возраст успешно изменен')
+        if name == 'рост':
+            print('Введите новый рост')
+            newHight = input()
+            people['рост'] = newHight
+            if people['рост'] == newName:
+                print('Рост успешно изменен')
+        if name == 'суперсила':
+            print('Введите новую суперсилу')
+            newBlood = input()
+            people['суперсила'] = newBlood
+            if people['суперсила'] == newName:
+                print('Суперсила успешно изменен')
+        if name == 'пароль':
+            print('Введите новый пароль')
+            newPassword = input()
+            people['пароль'] = newPassword
+            if people['пароль'] == newName:
+                print('Пароль успешно изменен')
+        if name == 'слабость':
+            print('Введите новое заметку')
+            newTrip = input()
+            people['слабость'] = newTrip
+            if people['слабость'] == newName:
+                print('Слабость успешно изменена')
+def add():
+    print('что вы хотите добавить?')
+    new = input()
+    print('что записать в',new)
+    stat = input()
+    people[new] = stat
+def lst():
+    print(people)
