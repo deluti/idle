@@ -1,0 +1,16 @@
+def prov():
+	year = float(input('Введите № интересующего года'))
+	if year % 4 == 0:
+		if year % 100 == 0:
+			if year % 400 == 0:
+				print('Год ' + str(year) + ' високосный!')
+			else:
+				print('Год ' + str(year) + ' не високосный!')
+		else:
+			print('Год ' + str(year) + ' високосный!')
+	else:
+		print('Год ' + str(year) + ' не високосный!')
+run = True
+while(run):
+	prov()
+		
