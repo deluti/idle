@@ -1,0 +1,33 @@
+lst_train = []
+class Train:
+    def __init__(self, point, num, time):
+        self.point = point
+        self.num = num
+        self.time = time
+    def info(self):
+        print(self.point, self.num, self.time)
+t1 = Train('Солнечное', '134', '15:15')
+t2 = Train('Казахстан', '696', '14:30')
+t3 = Train('Уругвай', '112', '23:55')
+t4 = Train('Татарстан', '10', '1:45')
+t5 = Train('Африка', '100', '0:01')
+lst_train.append(t1)
+lst_train.append(t2)
+lst_train.append(t3)
+lst_train.append(t4)
+lst_train.append(t5)
+def information():
+    print('Введите номер интересующего поезда:')
+    number = int(input())
+    if number == 134:
+        print(lst_train[0].info())
+    if number == 696:
+        print(lst_train[1].info())
+    if number == 112:
+        print(lst_train[2].info())
+    if number == 10:
+        print(lst_train[3].info())
+    if number == 100:
+        print(lst_train[4].info())
+while True:
+    information()
