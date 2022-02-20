@@ -1,0 +1,28 @@
+class Calc:
+    def __init__(self, num):
+        self.num = num
+    def add(self,m):
+        if self.num < 9:
+            self.num = self.num + m
+            print(self.num)
+        elif self.num == 9:
+            print('Достигнут предел значений!')
+            print(self.num)
+    def take(self, m):
+        if self.num > 0:
+            self.num = self.num - m
+            print(self.num)
+        elif self.num == 0:
+            print('Достигнут предел значений!')
+            print(self.num)
+pr = Calc(5)
+run = True
+while(run):
+    print('Выберете действие(добавить/отнять):')
+    q = input()
+    if q == 'добавить':
+        pr.add(1)
+    elif q == 'отнять':
+        pr.take(1)
+    else:
+        print('Введены не верные данные')
