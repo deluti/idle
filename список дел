@@ -1,0 +1,116 @@
+lst = []
+def read():
+    global lst
+    f = open('text.txt', 'r')
+    lst = f.read().splitlines()
+    print(lst)
+    f.close()
+def add():
+    global lst
+    print('Введите дело:')
+    new = input()
+    lst.append(new)
+    f = open('text.txt', 'a')
+    f.write(new)
+    f.close()
+def remove():
+    global lst
+    while True:
+        print('Введите номер того, что хотите удалить:')
+        delete = int(input())
+        x = 0
+        delete = delete - 1
+        size = 0
+        r = open('text.txt','r')
+        lst = r.read().splitlines()
+        for i in range(len(lst)):
+            size = size + 1
+        r.close()
+        if delete > size or delete < 0:
+            print('Введены не верные данные!')
+        else:
+            break
+    for i in range(len(lst)):
+        if i == delete:
+            lst.pop(i)
+    f = open('text.txt', 'w')
+    for i in range(len(lst)):
+        x = lst[i]
+        f.write(x)
+        f.write('\n')
+    print(lst)
+def redact():
+    global lst
+    print(lst)
+    while True:
+        print('Введите номер элемента, который хотите редактировать:')
+        red = int(input())
+        red = red - 1
+        size = 0
+        r = open('text.txt','r')
+        lst = r.read().splitlines()
+        for i in range(len(lst)):
+            size = size + 1
+        r.close()
+        if red > size or red < 0:
+            print('Введены не верные данные!')
+        else:
+            break
+
+    print('Введите новое дело:')
+    new = input()
+    lst[red] = new
+    f = open('text.txt', 'w')
+    for i in range(len(lst)):
+        x = lst[i]
+        f.write(x)
+        f.write('\n')
+    print(lst)
+def replace():
+    global lst
+    print(lst)
+    while True:
+        print('Введите номер элемента, который хотите переместить:')
+        fN = int(input())
+        fN = fN - 1
+        print('Введите номер элемента, на который хотите переставить:')
+        sN = int(input())
+        sN = sN - 1
+        size = 0
+        r = open('text.txt','r')
+        lst = r.read().splitlines()
+        for i in range(len(lst)):
+            size = size + 1
+        r.close()
+        if sN > size or sN < 0 or fN > size or fN < 0:
+            print('Введены не верные данные!')
+        else:
+            break
+    
+    tN = lst[sN]
+    lst[sN] = lst[fN]
+    lst[fN] = tN
+    print(lst)
+    f = open('text.txt', 'w')
+    for i in range(len(lst)):
+        x = lst[i]
+        f.write(x)
+        f.write('\n')
+    print(lst)
+while True:
+    f = open('text.txt', 'r')
+    lst = f.read().splitlines()
+    print(lst)
+    f.close()
+    print('Выберете действие:')
+    lvl = input('добавить,удалить,редактировать,переместить:')
+    if lvl == 'добавить':
+        add()
+    elif lvl == 'удалить':
+        remove()
+    elif lvl == 'редактировать':
+        redact()
+    elif lvl == 'переместить':
+        replace()
+    else:
+        print('Введены не верные данные!')
