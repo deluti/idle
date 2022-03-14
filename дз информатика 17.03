@@ -1,0 +1,42 @@
+from random import randint
+#список с 10 числами
+lst = []
+
+def prov():
+    #цикл с постусловием, созданный для того, чтобы пользователь вводил верное количество цифр
+    while True:
+        print('Введите число цифр в списке:')
+        st = int(input())
+        if st < 0:
+            print('Введены не верные данные!')
+        else:
+            break
+    #тут компьютер генерирует 10 чисел и записывает в lst
+    for i in range(0,st):
+        x = randint(0, 100)
+        lst.append(x)
+    #цикл с постусловием, созданный для того, чтобы пользователь вводил верное число
+    while True:
+        print('попробуйте угадать одно число из 10(от 1 до 100)')
+        num = input()
+        if int(num) > 100 or int(num) < 0:
+            print('Введены не верные данные!')
+        elif int(num) > 0 and int(num) < 100:
+            break
+        else:
+            print('Введены не верные данные!')
+    #цикл для проверки числа и числа в списке
+    m = 0
+    for i in range(len(lst)):
+        if lst[i] == int(num):
+            m = 1
+    #вывод результата
+    if m == 1:
+        print('Вы угадали')
+        print(lst)
+    if m == 0:
+        print('Ни одно число не угадано!')
+        print(lst)
+    lst.clear()
+while True:
+	prov()
