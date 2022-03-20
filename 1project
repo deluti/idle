@@ -1,0 +1,253 @@
+#ы
+lst = []
+import pygame
+pygame.init()
+size = (320, 320)
+pygame.display.set_caption('Red Or Green')
+screen = pygame.display.set_mode(size)
+white = (255, 255, 255)
+class Game:
+    def __init__(self):
+        pass
+    def delete(self):
+        pygame.quit()
+    def replace(self):
+        screen.fill(black)
+        block1 = (white)
+        block2 = (white)
+        block3 = (white)
+        block4 = (white)
+        block5 = (white)
+        block6 = (white)
+        block7 = (white)
+        block8 = (white)
+        block9 = (white)
+        game_over = 1
+pg = Game()
+block1 = (255, 255, 255)
+block2 = (255, 255, 255)
+block3 = (255, 255, 255)
+block4 = (255, 255, 255)
+block5 = (255, 255, 255)
+block6 = (255, 255, 255)
+block7 = (255, 255, 255)
+block8 = (255, 255, 255)
+block9 = (255, 255, 255)
+eventType = 0
+game_over = 1
+
+f1 = pygame.font.Font(None, 36)
+redText = f1.render('Красный победил', 1, (255, 0, 0))
+greenText = f1.render('Зеленый победил', 1, (0, 255, 0))
+peaceText = f1.render('Ничья', 1, (0,0,0))
+black = (0, 0, 0)
+
+
+
+while True:
+    if not block1 == (255, 255, 255) and not game_over > 1:
+        if not block2 == (255, 255, 255):
+            if not block3 == (255, 255, 255):
+                if not block4 == (255, 255, 255):
+                    if not block5 == (255, 255, 255):
+                        if not block6 == (255, 255, 255):
+                            if not block7 == (255, 255, 255):
+                                if not block8 == (255, 255, 255):
+                                    if not block9 == (255, 255, 255):
+                                        screen.fill(white)
+                                        game_over = 0
+                                        screen.blit(peaceText, (10, 50))
+    if block1 == block4 and block4 == block9 and (block1 == (255, 0, 0) or block1 == (0, 255, 0)) and game_over > 0:
+        game_over = 0
+        print(game_over)
+        screen.fill(white)
+        if block1 == (255, 0, 0):
+            screen.blit(redText, (10, 50))
+        if block1 == (0, 255, 0):
+            screen.blit(greenText, (10, 50))
+        pygame.display.update()
+
+    if block2 == block5 and block5 == block8 and (block2 == (255, 0, 0) or block2 == (0, 255, 0)) and game_over > 0:
+        game_over = 0
+        screen.fill(white)
+        if block2 == (255, 0, 0):
+            screen.blit(redText, (10, 50))
+        elif block2 == (0, 255, 0):
+            screen.blit(greenText, (10, 50))
+        pygame.display.update()
+
+    if block3 == block6 and block6 == block7 and (block3 == (255, 0, 0) or block3 == (0, 255, 0)) and game_over > 0:
+        game_over = 0
+        screen.fill(white)
+        if block3 == (255, 0, 0):
+            screen.blit(redText, (10, 50))
+        elif block3 == (0, 255, 0):
+            screen.blit(greenText, (10, 50))
+        pygame.display.update()
+    
+    if block1 == block2 and block2 == block3 and (block1 == (255, 0, 0) or block1 == (0, 255, 0)) and game_over > 0:
+        game_over = 0
+        screen.fill(white)
+        if block1 == (255, 0, 0):
+            screen.blit(redText, (10, 50))
+        elif block1 == (0, 255, 0):
+            screen.blit(greenText, (10, 50))
+        pygame.display.update()
+
+    if block4 == block5 and block5 == block7 and (block4 == (255, 0, 0) or block4 == (0, 255, 0)) and game_over > 0:
+        game_over = 0
+        screen.fill(white)
+        if block4 == (255, 0, 0):
+            screen.blit(redText, (10, 50))
+        elif block4 == (0, 255, 0):
+            screen.blit(greenText, (10, 50))
+        pygame.display.update()
+    if block9 == block8 and block8 == block6 and (block9 == (255, 0, 0) or block9 == (0, 255, 0)) and game_over > 0:
+        game_over = 0
+        screen.fill(white)
+        if block9 == (255, 0, 0):
+            screen.blit(redText, (10, 50))
+        elif block9 == (0, 255, 0):
+            screen.blit(greenText, (10, 50))
+        pygame.display.update()
+    
+    if block1 == block5 and block5 == block6 and (block1 == (255, 0, 0) or block1 == (0, 255, 0)) and game_over > 0:
+        game_over = 0
+        screen.fill(white)
+        if block1 == (255, 0, 0):
+            screen.blit(redText, (10, 50))
+        elif block1 == (0, 255, 0):
+            screen.blit(greenText, (10, 50))
+        pygame.display.update()
+    if block3 == block5 and block5 == block9 and (block3 == (255, 0, 0) or block3 == (0, 255, 0)) and game_over > 0:
+        game_over = 0
+        screen.fill(white)
+        if block3 == (255, 0, 0):
+            screen.blit(redText, (10, 50))
+        elif block3 == (0, 255, 0):
+            screen.blit(greenText, (10, 50))
+        pygame.display.update()
+    
+    for i in pygame.event.get():
+        if i.type == pygame.QUIT:
+            pg.delete()
+        if i.type == pygame.KEYDOWN:
+            if i.key == pygame.K_SPACE:
+                screen.fill(black)
+                block1 = (white)
+                block2 = (white)
+                block3 = (white)
+                block4 = (white)
+                block5 = (white)
+                block6 = (white)
+                block7 = (white)
+                block8 = (white)
+                block9 = (white)
+                game_over = 1
+    if game_over > 0:
+        pygame.draw.rect(screen, block1, (0,0,100,100))
+        pygame.draw.rect(screen, block2, (110,0,100,100))
+        pygame.draw.rect(screen, block3, (220,0,100,100))
+        pygame.draw.rect(screen, block4, (0,110,100,100))
+        pygame.draw.rect(screen, block5, (110,110,100,100))
+        pygame.draw.rect(screen, block6, (220,220,100,100))
+        pygame.draw.rect(screen, block7, (220,110,100,100))
+        pygame.draw.rect(screen, block8, (110,220,100,100))
+        pygame.draw.rect(screen, block9, (0,220,100,100))
+        for i in pygame.event.get():
+            if i.type == pygame.QUIT:
+                pygame.quit()
+            if i.type == pygame.MOUSEBUTTONDOWN:
+                x_mouse, y_mouse = i.pos
+                print(x_mouse, y_mouse)
+                if x_mouse > 0 and y_mouse > 0 and x_mouse < 100 and y_mouse < 100:
+                    if eventType % 2 == 0:
+                        if not block1 == (255, 0, 0) and not block1 == (0, 255, 0):
+                            block1 = (255, 0, 0)
+                            eventType += 1
+                    elif not eventType % 2 == 0:
+                        if not block1 == (255, 0, 0) and not block1 == (0, 255, 0):
+                            block1 = (0, 255, 0)
+                            eventType += 1
+                
+                if x_mouse > 110 and y_mouse > 0 and x_mouse < 210 and y_mouse < 100:
+                    if eventType % 2 == 0:
+                        if not block2 == (255, 0, 0) and not block2 == (0, 255, 0):
+                            block2 = (255, 0, 0)
+                            eventType += 1
+                    elif not eventType % 2 == 0:
+                        if not block2 == (255, 0, 0) and not block2 == (0, 255, 0):
+                            block2 = (0, 255, 0)
+                            eventType += 1
+                            
+                if x_mouse > 220 and y_mouse > 0 and x_mouse < 320 and y_mouse < 100:
+                    if eventType % 2 == 0:
+                        if not block3 == (255, 0, 0) and not block3 == (0, 255, 0):
+                            block3 = (255, 0, 0)
+                            eventType += 1
+                    elif not eventType % 2 == 0:
+                        if not block3 == (255, 0, 0) and not block3 == (0, 255, 0):
+                            block3 = (0, 255, 0)
+                            eventType += 1
+                
+                if x_mouse > 0 and y_mouse > 110 and x_mouse < 100 and y_mouse < 210:
+                    if eventType % 2 == 0:
+                        if not block4 == (255, 0, 0) and not block4 == (0, 255, 0):
+                            block4 = (255, 0, 0)
+                            eventType += 1
+                    elif not eventType % 2 == 0:
+                        if not block4 == (255, 0, 0) and not block4 == (0, 255, 0):
+                            block4 = (0, 255, 0)
+                            eventType += 1
+                            
+                if x_mouse > 110 and y_mouse > 110 and x_mouse < 210 and y_mouse < 210:
+                    if eventType % 2 == 0:
+                        if not block5 == (255, 0, 0) and not block5 == (0, 255, 0):
+                            block5 = (255, 0, 0)
+                            eventType += 1
+                    elif not eventType % 2 == 0:
+                        if not block5 == (255, 0, 0) and not block5 == (0, 255, 0):
+                            block5 = (0, 255, 0)
+                            eventType += 1
+                            
+                if x_mouse > 220 and y_mouse > 220 and x_mouse < 320 and y_mouse < 320:
+                    if eventType % 2 == 0:
+                        if not block6 == (255, 0, 0) and not block6 == (0, 255, 0):
+                            block6 = (255, 0, 0)
+                            eventType += 1
+                    elif not eventType % 2 == 0:
+                        if not block6 == (255, 0, 0) and not block6 == (0, 255, 0):
+                            block6 = (0, 255, 0)
+                            eventType += 1
+                
+                if x_mouse > 220 and y_mouse > 110 and x_mouse < 320 and y_mouse < 220:
+                    if eventType % 2 == 0:
+                        if not block7 == (255, 0, 0) and not block7 == (0, 255, 0):
+                            block7 = (255, 0, 0)
+                            eventType += 1
+                    elif not eventType % 2 == 0:
+                        if not block7 == (255, 0, 0) and not block7 == (0, 255, 0):
+                            block7 = (0, 255, 0)
+                            eventType += 1
+                            
+                if x_mouse > 110 and y_mouse > 220 and x_mouse < 210 and y_mouse < 320:
+                    if eventType % 2 == 0:
+                        if not block8 == (255, 0, 0) and not block8 == (0, 255, 0):
+                            block8 = (255, 0, 0)
+                            eventType += 1
+                    elif not eventType % 2 == 0:
+                        if not block8 == (255, 0, 0) and not block8 == (0, 255, 0):
+                            block8 = (0, 255, 0)
+                            eventType += 1
+                            
+                if x_mouse > 0 and y_mouse > 220 and x_mouse < 100 and y_mouse < 320:
+                    if eventType % 2 == 0:
+                        if not block9 == (255, 0, 0) and not block9 == (0, 255, 0):
+                            block9 = (255, 0, 0)
+                            eventType += 1
+                    elif not eventType % 2 == 0:
+                        if not block9 == (255, 0, 0) and not block9 == (0, 255, 0):
+                            block9 = (0, 255, 0)
+                            eventType += 1
+                    print(block1)
+    pygame.display.update()
