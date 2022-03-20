@@ -46,16 +46,16 @@ black = (0, 0, 0)
 
 while True:
     if not block1 == (255, 255, 255) and not game_over > 1:
-        if not block2 == (255, 255, 255):
-            if not block3 == (255, 255, 255):
-                if not block4 == (255, 255, 255):
-                    if not block5 == (255, 255, 255):
-                        if not block6 == (255, 255, 255):
-                            if not block7 == (255, 255, 255):
-                                if not block8 == (255, 255, 255):
-                                    if not block9 == (255, 255, 255):
-                                        screen.fill(white)
+        if not block2 == (255, 255, 255) and not game_over > 1:
+            if not block3 == (255, 255, 255) and not game_over > 1:
+                if not block4 == (255, 255, 255) and not game_over > 1:
+                    if not block5 == (255, 255, 255) and not game_over > 1:
+                        if not block6 == (255, 255, 255) and not game_over > 1:
+                            if not block7 == (255, 255, 255) and not game_over > 1:
+                                if not block8 == (255, 255, 255) and not game_over > 1:
+                                    if not block9 == (255, 255, 255) and not game_over > 1:
                                         game_over = 0
+                                        screen.fill(white)
                                         screen.blit(peaceText, (10, 50))
     if block1 == block4 and block4 == block9 and (block1 == (255, 0, 0) or block1 == (0, 255, 0)) and game_over > 0:
         game_over = 0
@@ -127,7 +127,6 @@ while True:
         elif block3 == (0, 255, 0):
             screen.blit(greenText, (10, 50))
         pygame.display.update()
-    
     for i in pygame.event.get():
         if i.type == pygame.QUIT:
             pg.delete()
@@ -144,6 +143,9 @@ while True:
                 block8 = (white)
                 block9 = (white)
                 game_over = 1
+    
+    
+    
     if game_over > 0:
         pygame.draw.rect(screen, block1, (0,0,100,100))
         pygame.draw.rect(screen, block2, (110,0,100,100))
