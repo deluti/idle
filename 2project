@@ -8,7 +8,6 @@ pygame.display.set_caption('Red Or Green')
 screen = pygame.display.set_mode(size)
 white = (255, 255, 255)
 
-
 class Game:
     def __init__(self):
         pass
@@ -217,7 +216,7 @@ while True:
 
     if block1 == block5 and block5 == block6 and (block1 == (255, 0, 0) or block1 == (0, 255, 0)) and game_over > 0:
         game_over1 = 0
-        if block == (255, 0, 0):
+        if block1 == (255, 0, 0):
             print('красный победил')
         else:
             print('зеленый победил')
