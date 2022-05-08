@@ -1,0 +1,123 @@
+import pygame
+import random
+pygame.init()
+size = (500,500)
+screen = pygame.display.set_mode(size)
+x = 0
+pole = [['0','0','0','0','0'],
+        ['1','0','0','0','0'],
+        ['0','0','0','0','0'],
+        ['0','0','0','0','0'],
+        ['0','0','0','0','0']]
+xRed = 0
+yRed = 0
+xGreen = 0
+yGreen = 0
+x_mouse = -1
+y_mouse = -1
+create = True
+blockActive = 0
+activeBlock = 0
+cont = 1
+while True:
+    for i in pygame.event.get():
+        if i.type == pygame.QUIT:
+            pygame.quit()
+        elif i.type == pygame.MOUSEBUTTONDOWN:
+            x_mouse,y_mouse = i.pos
+            #1
+            if x_mouse > 0 and x_mouse < 100 and y_mouse > 0 and y_mouse < 100:
+                blockActive = 1
+            elif x_mouse > 100 and x_mouse < 200 and y_mouse > 0 and y_mouse < 100:
+                blockActive = 2
+            elif x_mouse > 200 and x_mouse < 300 and y_mouse > 0 and y_mouse < 100:
+                blockActive = 3
+            elif x_mouse > 300 and x_mouse < 400 and y_mouse > 0 and y_mouse < 100:
+                blockActive = 4
+            elif x_mouse > 400 and x_mouse < 500 and y_mouse > 0 and y_mouse < 100:
+                blockActive = 5
+            #2
+            elif x_mouse > 0 and x_mouse < 100 and y_mouse > 100 and y_mouse < 200:
+                blockActive = 6
+            elif x_mouse > 100 and x_mouse < 200 and y_mouse > 100 and y_mouse < 200:
+                blockActive = 7
+            elif x_mouse > 200 and x_mouse < 300 and y_mouse > 100 and y_mouse < 200:
+                blockActive = 8
+            elif x_mouse > 300 and x_mouse < 400 and y_mouse > 100 and y_mouse < 200:
+                blockActive = 9
+            elif x_mouse > 400 and x_mouse < 500 and y_mouse > 100 and y_mouse < 200:
+                blockActive = 10
+            #3
+            elif x_mouse > 0 and x_mouse < 100 and y_mouse > 200 and y_mouse < 300:
+                blockActive = 11
+            elif x_mouse > 100 and x_mouse < 200 and y_mouse > 200 and y_mouse < 300:
+                blockActive = 12
+            elif x_mouse > 200 and x_mouse < 300 and y_mouse > 200 and y_mouse < 300:
+                blockActive = 13
+            elif x_mouse > 300 and x_mouse < 400 and y_mouse > 200 and y_mouse < 300:
+                blockActive = 14
+            elif x_mouse > 400 and x_mouse < 500 and y_mouse > 200 and y_mouse < 300:
+                blockActive = 15
+            #4
+            elif x_mouse > 0 and x_mouse < 100 and y_mouse > 300 and y_mouse < 400:
+                blockActive = 16
+            elif x_mouse > 100 and x_mouse < 200 and y_mouse > 300 and y_mouse < 400:
+                blockActive = 17
+            elif x_mouse > 200 and x_mouse < 300 and y_mouse > 300 and y_mouse < 400:
+                blockActive = 18
+            elif x_mouse > 300 and x_mouse < 400 and y_mouse > 300 and y_mouse < 400:
+                blockActive = 19
+            elif x_mouse > 400 and x_mouse < 500 and y_mouse > 300 and y_mouse < 400:
+                blockActive = 20
+            #5
+            elif x_mouse > 0 and x_mouse < 100 and y_mouse > 400 and y_mouse < 500:
+                blockActive = 21
+            elif x_mouse > 100 and x_mouse < 200 and y_mouse > 400 and y_mouse < 500:
+                blockActive = 22
+            elif x_mouse > 200 and x_mouse < 300 and y_mouse > 400 and y_mouse < 500:
+                blockActive = 23
+            elif x_mouse > 300 and x_mouse < 400 and y_mouse > 400 and y_mouse < 500:
+                blockActive = 24
+            elif x_mouse > 400 and x_mouse < 500 and y_mouse > 400 and y_mouse < 500:
+                blockActive = 25
+            print(activeBlock)
+            cont = 1
+        if i.type == pygame.KEYDOWN:
+            if i.key == pygame.K_UP:
+                blockActive = int(blockActive)
+                blockActive -= 5
+                if blockActive < 0:
+                    blockActive += 5
+                    print(str(blockActive) + ' этот')
+                elif blockActive > 0:
+                    if blockActive + 5 == 6:
+                        if pole[0][1] == '1':
+                            pole[0][0] == '1'
+                print(pole[0][0])
+    while create == True:
+        for i in range(2):
+            while True:
+                xRed = random.randint(0,4)
+                yRed = random.randint(0,4)
+                if pole[yRed][xRed] == '0':
+                    pole[yRed][xRed] = '1'
+                    break
+        for i in range(2):
+            while True:
+                xGreen = random.randint(0,4)
+                yGreen = random.randint(0,4)
+                if pole[yGreen][xGreen] == '0':
+                    pole[yGreen][xGreen] = '2'
+                    break
+        create = False
+    for i in range(len(pole)):
+        for n in range(len(pole)):
+            if pole[i][n] == '0':
+                pygame.draw.rect(screen, (255,255,255), (n*100,i*100,100,100),5)
+            elif pole[i][n] == '1':
+                pygame.draw.rect(screen, (255,0,0), (n*100,i*100,100,100))
+            elif pole[i][n] == '2':
+                pygame.draw.rect(screen, (0,255,0), (n*100,i*100,100,100))  
+            x += 10
+    pygame.display.update()
+    
