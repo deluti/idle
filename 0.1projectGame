@@ -1,0 +1,133 @@
+import pygame
+import random
+pygame.init()
+size = (400,400)
+screen = pygame.display.set_mode(size)
+x = 0
+pole = [['0','0','0','0','0'],
+        ['0','0','0','0','0'],
+        ['0','0','0','0','0'],
+        ['0','0','0','0','0'],
+        ['0','0','0','0','0']]
+lstRed = []
+lstGreen = []
+lstN = []
+
+xRed = 0
+yRed = 0
+xGreen = 0
+yGreen = 0
+x_mouse = -1
+y_mouse = -1
+create = True
+blockActive = 0
+activeBlock = 0
+cont = 1
+gameCheck = 1
+redCount = 0
+greenCount = 0
+redFirst = 0
+w = 0
+h = 0
+gameDraw = True
+while True:
+    
+    for i in pygame.event.get():
+        if i.type == pygame.QUIT:
+            pygame.quit()
+        elif i.type == pygame.MOUSEBUTTONDOWN:
+                x_mouse, y_mouse = i.pos
+                lstN = []
+                while True:
+                    if x_mouse > w:
+                        w += 100
+                    if x_mouse < w:
+                        w -= 100
+                        if w > 0:
+                            lstN.append(w/100)
+                        else:
+                            lstN.append(0)
+                        break
+                w = 0
+                while True:
+                    if x_mouse < w+600:
+                        w -= 100
+                    if x_mouse < w+600:
+                        w += 100
+                        if w > 0:
+                            lstN.append(w/100)
+                        else:
+                            lstN.append(0)
+                        break
+                while True:
+                    if y_mouse > h:
+                        h += 100
+                    if y_mouse < h:
+                        h -= 100
+                        if h > 0:
+                            lstN.append(h/100)
+                        else:
+                            lstN.append(0)
+                        break
+                h = 0
+                while True:
+                    if y_mouse < h+600:
+                        h -= 100
+                    if y_mouse < h+600:
+                        h += 100
+                        if h > 0:
+                            lstN.append(h/100)
+                        else:
+                            lstN.append(0)
+                        break
+                if pole[lstN[0],lstN[1]] == '1':
+                    pass
+                    if pole[lstN[2],lstN[3]] == '2':
+                        pass
+                    else:
+                        lstN = []
+                else:
+                    lstN = []
+                
+                print(lstN)
+    while create == True:
+        for i in range(2):
+            while True:
+                xRed = random.randint(0,4)
+                yRed = random.randint(0,4)
+                if pole[yRed][xRed] == '0':
+                    pole[yRed][xRed] = '1'
+                    break
+        for i in range(2):
+            while True:
+                xGreen = random.randint(0,4)
+                yGreen = random.randint(0,4)
+                if pole[yGreen][xGreen] == '0':
+                    pole[yGreen][xGreen] = '2'
+                    break
+        create = False
+    if gameCheck == 1:
+        for i in range(len(pole)):
+            for n in range(len(pole)):
+                if pole[i][n] == '1':
+                    lstRed.append(i)
+                    lstRed.append(n)
+                elif pole[i][n] == '2':
+                    lstGreen.append(i)
+                    lstGreen.append(n)
+        print(lstRed)
+        print(lstGreen)
+        gameCheck = 0
+    if gameDraw == True:
+        for i in range(len(pole)):
+            for n in range(len(pole)):
+                if pole[i][n] == '0':
+                    pygame.draw.rect(screen, (255,255,255), (n*100,i*100,100,100),5)
+                elif pole[i][n] == '1':
+                    pygame.draw.rect(screen, (255,0,0), (n*100,i*100,100,100))
+                elif pole[i][n] == '2':
+                    pygame.draw.rect(screen, (0,255,0), (n*100,i*100,100,100))  
+                x += 10
+        gameDraw = False
+    pygame.display.update()
+
