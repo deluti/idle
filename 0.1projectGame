@@ -10,6 +10,7 @@ pole = [['0','0','0','0','0'],
         ['0','0','0','0','0'],
         ['0','0','0','0','0']]
 lstRed = []
+lstGreen = []
 xRed = 0
 yRed = 0
 xGreen = 0
@@ -32,51 +33,91 @@ while True:
             if i.key == pygame.K_DOWN:
                 if yPlayer < 4:
                     if gameRed == True:
-                        yPlayer += 1
-                        lastPoint = '1'
+                        if pole[yPlayer+1][xPlayer] == '0':
+                            yPlayer += 1
+                            lastPoint = '1'
                     if gameGreen == True:
-                        yPlayer += 1
-                        lastPoint = '2'
+                        if pole[yPlayer+1][xPlayer] == '0':
+                            yPlayer += 1
+                            lastPoint = '2'
                     pole[yPlayer][xPlayer] = lastPoint
                     if gameRed != True and gameGreen != True:
                         lastPoint = pole[yPlayer+1][xPlayer]
                         yPlayer += 1
-            elif i.key == pygame.K_RIGHT:
+                    if yPlayer+1 == lstRed[1] and xPlayer == lstRed[0]:
+                        gameRed = False
+                    elif yPlayer+1 == lstRed[3] and xPlayer == lstRed[2]:
+                        gameRed = False
+                    elif yPlayer+1 == lstGreen[1] and xPlayer == lstGreen[0]:
+                        gameGreen = False
+                    elif yPlayer+1 == lstGreen[3] and xPlayer == lstGreen[2]:
+                        gameGreen = False
+            if i.key == pygame.K_RIGHT:
                 if xPlayer < 4:
                     if gameRed == True:
-                        xPlayer += 1
-                        lastPoint = '1'
+                        if pole[yPlayer][xPlayer+1] == '0':
+                            xPlayer += 1
+                            lastPoint = '1'
                     if gameGreen == True:
-                        xPlayer += 1
-                        lastPoint = '2'
+                        if pole[yPlayer][xPlayer+1] == '0':
+                            xPlayer += 1
+                            lastPoint = '2'
                     pole[yPlayer][xPlayer] = lastPoint
                     if gameRed != True and gameGreen != True:
                         lastPoint = pole[yPlayer][xPlayer+1]
                         xPlayer += 1
-            elif i.key == pygame.K_UP:
+                    if yPlayer == lstRed[1] and xPlayer+1 == lstRed[0]:
+                        gameRed = False
+                    elif yPlayer == lstRed[3] and xPlayer+1 == lstRed[2]:
+                        gameRed = False
+                    elif yPlayer == lstGreen[1] and xPlayer+1 == lstGreen[0]:
+                        gameGreen = False
+                    elif yPlayer == lstGreen[3] and xPlayer+1 == lstGreen[2]:
+                        gameGreen = False
+            if i.key == pygame.K_UP:
                 if yPlayer > 0:
                     if gameRed == True:
-                        yPlayer -= 1
-                        lastPoint = '1'
+                        if pole[yPlayer-1][xPlayer] == '0':
+                            yPlayer -= 1
+                            lastPoint = '1'
                     if gameGreen == True:
-                        yPlayer -= 1
-                        lastPoint = '2'
+                        if pole[yPlayer-1][xPlayer] == '0':
+                            yPlayer -= 1
+                            lastPoint = '2'
                     pole[yPlayer][xPlayer] = lastPoint
                     if gameRed != True and gameGreen != True:
                         lastPoint = pole[yPlayer-1][xPlayer]
                         yPlayer -= 1
-            elif i.key == pygame.K_LEFT:
+                    if yPlayer-1 == lstRed[1] and xPlayer == lstRed[0]:
+                        gameRed = False
+                    elif yPlayer-1 == lstRed[3] and xPlayer == lstRed[2]:
+                        gameRed = False
+                    elif yPlayer-1 == lstGreen[1] and xPlayer == lstGreen[0]:
+                        gameGreen = False
+                    elif yPlayer-1 == lstGreen[3] and xPlayer == lstGreen[2]:
+                        gameGreen = False
+            if i.key == pygame.K_LEFT:
                 if xPlayer > 0:
                     if gameRed == True:
-                        xPlayer -= 1
-                        lastPoint = '1'
+                        if pole[yPlayer][xPlayer-1] == '0':
+                            xPlayer -= 1
+                            lastPoint = '1'
                     if gameGreen == True:
-                        xPlayer -= 1
-                        lastPoint = '2'
+                        if pole[yPlayer][xPlayer-1] == '0':
+                            xPlayer -= 1
+                            lastPoint = '2'
                     pole[yPlayer][xPlayer] = lastPoint
                     if gameRed != True and gameGreen != True:
                         lastPoint = pole[yPlayer][xPlayer-1]
                         xPlayer -= 1
+                    if yPlayer == lstRed[1] and xPlayer-1 == lstRed[0]:
+                        gameRed = False
+                    elif yPlayer == lstRed[3] and xPlayer-1 == lstRed[2]:
+                        gameRed = False
+                    elif yPlayer == lstGreen[1] and xPlayer-1 == lstGreen[0]:
+                        gameGreen = False
+                    elif yPlayer == lstGreen[3] and xPlayer-1 == lstGreen[2]:
+                        gameGreen = False
             elif i.key == pygame.K_SPACE:
                 if lastPoint == '1':
                     gameRed = True
@@ -84,12 +125,22 @@ while True:
                 elif lastPoint == '2':
                     gameGreen = True
                     print('green')
+            elif i.key == pygame.K_1:
+                screen.fill(0)
+                for i in range(len(pole)):
+                    for n in range(len(pole)):
+                        pole[i][n] = '0'
+                pole[lstRed[1]][lstRed[0]] = '1'
+                pole[lstRed[3]][lstRed[2]] = '1'
+                pole[lstGreen[1]][lstGreen[0]] = '2'
+                pole[lstGreen[3]][lstGreen[2]] = '2'
     while create == True:
         for i in range(2):
             while True:
                 xRed = random.randint(0,4)
                 yRed = random.randint(0,4)
                 if pole[yRed][xRed] == '0':
+                    pole[yRed][xRed] = '1'
                     pole[yRed][xRed] = '1'
                     break
         for i in range(2):
@@ -98,18 +149,29 @@ while True:
                 yGreen = random.randint(0,4)
                 if pole[yGreen][xGreen] == '0':
                     pole[yGreen][xGreen] = '2'
+                    pole[yGreen][xGreen] = '2'
                     break
+        for i in range(len(pole)):
+            for n in range(len(pole)):
+                if pole[i][n] == '1':
+                    lstRed.append(n)
+                    lstRed.append(i)
+                elif pole[i][n] == '2':
+                    lstGreen.append(n)
+                    lstGreen.append(i)
+        print(lstRed)
+        print(lstGreen)
         create = False
     for i in range(len(pole)):
-                for n in range(len(pole)):
-                    if pole[i][n] == '0':
-                        pygame.draw.rect(screen, (255,255,255), (n*100,i*100,100,100),5)
-                    elif pole[i][n] == '1':
-                        pygame.draw.rect(screen, (255,0,0), (n*100,i*100,100,100))
-                    elif pole[i][n] == '2':
-                        pygame.draw.rect(screen, (0,255,0), (n*100,i*100,100,100))
-                    elif pole[i][n] == '-':
-                        pygame.draw.rect(screen, (255,255,0), (n*100,i*100,100,100),5)
-                    x += 10  
+        for n in range(len(pole)):
+            if pole[i][n] == '0':
+                pygame.draw.rect(screen, (255,255,255), (n*100,i*100,100,100),5)
+            elif pole[i][n] == '-':
+                pygame.draw.rect(screen, (255,100,100), (n*100,i*100,100,100),4)
+            elif pole[i][n] == '1':
+                pygame.draw.rect(screen, (255,0,0), (n*100,i*100,100,100))
+            elif pole[i][n] == '2':
+                pygame.draw.rect(screen, (0,255,0), (n*100,i*100,100,100))
+            x += 10  
     pygame.display.update()
 
